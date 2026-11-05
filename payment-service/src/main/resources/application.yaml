@@ -1,0 +1,5 @@
+# Payment processing is simulated locally for the gRPC demo.
+spring:
+  grpc:
+    server:
+      port: 9090

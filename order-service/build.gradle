@@ -1,0 +1,11 @@
+plugins {
+    id 'spring-boot-common-conventions'
+}
+
+dependencies {
+    // Serves the controller's HTTP/JSON endpoint.
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    // Makes generated payment messages and client stubs available to Order Service.
+    implementation project(':share-common:common-grpc')
+    implementation 'org.springframework.boot:spring-boot-starter-grpc-client'
+}

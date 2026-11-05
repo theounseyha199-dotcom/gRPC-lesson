@@ -1,0 +1,26 @@
+plugins {
+    id 'java-common-conventions'
+    id 'io.spring.dependency-management'
+}
+
+dependencyManagement {
+    imports {
+        // Supplies compatible dependency versions; align with the Boot plugin in build-logic.
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:4.1.1'
+    }
+}
+
+dependencies {
+    // Coordinate Lombok and MapStruct when generating code during compilation.
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+    compileOnly 'org.mapstruct:mapstruct:1.6.3'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter-logging'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+}
+
+dependencies {
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

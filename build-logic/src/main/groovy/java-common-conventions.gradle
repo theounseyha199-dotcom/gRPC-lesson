@@ -1,0 +1,29 @@
+plugins {
+    id 'java-library'
+}
+
+group = 'kh.edu.istad'
+version = '1.0.0'
+
+
+java {
+    toolchain {
+        // All consuming modules compile with the same Java toolchain.
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+// Run JUnit Jupiter tests through the JUnit Platform.
+tasks.named('test', Test) {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:6.0.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}

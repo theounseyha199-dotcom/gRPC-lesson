@@ -1,0 +1,16 @@
+plugins {
+    // Compile src/main/groovy/*.gradle into reusable convention plugins.
+    id 'groovy-gradle-plugin'
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+// External plugins used inside convention scripts need to be on this build's classpath.
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-gradle-plugin:4.1.1'
+    implementation 'io.spring.gradle:dependency-management-plugin:1.1.7'
+    implementation 'com.google.protobuf:protobuf-gradle-plugin:0.9.6'
+}

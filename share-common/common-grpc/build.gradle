@@ -1,0 +1,30 @@
+plugins {
+    // Shared library: use Spring dependency versions without executable Boot packaging.
+    id 'spring-common-conventions'
+    id 'com.google.protobuf'
+}
+
+dependencies {
+    // Export gRPC APIs because the generated public classes expose these types.
+    api 'io.grpc:grpc-protobuf'
+    api 'io.grpc:grpc-stub'
+}
+
+protobuf {
+    // Match code generators to runtime versions managed by the Spring Boot BOM.
+    protoc {
+        artifact = "com.google.protobuf:protoc:${dependencyManagement.importedProperties['protobuf-java.version']}"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${dependencyManagement.importedProperties['grpc-java.version']}"
+        }
+    }
+    // Generate messages and gRPC stubs from src/main/proto before Java compilation.
+    // Generated files belong under build/; change the .proto contract, not those files.
+    generateProtoTasks {
+        all().configureEach {
+            plugins { grpc {} }
+        }
+    }
+}

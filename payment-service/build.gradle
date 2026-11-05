@@ -1,0 +1,10 @@
+plugins {
+    id 'spring-boot-common-conventions'
+}
+
+dependencies {
+    // Uses the same generated contract as Order Service, including the server base class.
+    implementation project(':share-common:common-grpc')
+    // Auto-configures the gRPC server that exposes Spring BindableService beans.
+    implementation 'org.springframework.boot:spring-boot-starter-grpc-server'
+}

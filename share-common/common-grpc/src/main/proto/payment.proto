@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package payment;
+
+// Generate separate Java message classes for both services to import.
+option java_multiple_files = true;
+// Java imports use this package; the protobuf service namespace above remains payment.
+option java_package = "com.example.common.grpc.payment";
+
+// Shared network contract: one request produces one response (a unary RPC).
+service PaymentService {
+  rpc ProcessPayment(PaymentRequest) returns (PaymentResponse);
+}
+
+// Field numbers identify values on the wire; do not renumber or reuse existing tags.
+message PaymentRequest {
+  string order_id = 1;
+  // Integer cents avoid floating-point rounding for this contract's amount.
+  int64 amount_cents = 2;
+}
+
+message PaymentResponse {
+  string payment_id = 1;
+  bool success = 2;
+  string message = 3;
+}

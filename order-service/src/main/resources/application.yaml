@@ -1,0 +1,9 @@
+# Override PAYMENT_GRPC_ADDRESS when Payment Service runs on another host.
+spring:
+  grpc:
+    client:
+      channel:
+        payment:
+          target: "${PAYMENT_GRPC_ADDRESS:localhost:9090}"
+          ssl:
+            enabled: false

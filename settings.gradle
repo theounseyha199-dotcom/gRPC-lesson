@@ -1,0 +1,10 @@
+pluginManagement {
+    // Register convention plugins so every module can apply them by ID.
+    includeBuild('build-logic')
+}
+
+rootProject.name = 'untitled-demo'
+include 'order-service'
+include 'payment-service'
+include 'share-common'
+include 'share-common:common-grpc'

@@ -1,0 +1,5 @@
+plugins {
+    id 'spring-common-conventions'
+    // Adds bootRun and executable bootJar packaging for application modules.
+    id 'org.springframework.boot'
+}

@@ -1,0 +1,34 @@
+# Use version 2 of Buf's configuration file format.
+version: v2
+
+# List the groups of .proto files that Buf should manage.
+modules:
+  # Read the existing shared schemas from this directory, relative to this file.
+  - path: share-common/common-grpc/src/main/proto
+    # Before publishing, create a repository on buf.build, replace YOUR_OWNER
+    # with your account or organization, and uncomment the following line.
+    # This identifies the remote repository used by `buf push`.
+    # name: buf.build/YOUR_OWNER/payment
+
+# Check schemas for naming and structure conventions with `buf lint`.
+lint:
+  use:
+    # Enable Buf's standard collection of lint rules.
+    - STANDARD
+  # Disable these rules to preserve the existing contract and Gradle layout.
+  except:
+    # Allow payment.proto at the module root despite its `package payment`.
+    - PACKAGE_DIRECTORY_MATCH
+    # Allow `package payment` without a version suffix such as `payment.v1`.
+    - PACKAGE_VERSION_SUFFIX
+    # Allow PaymentRequest instead of the method-based ProcessPaymentRequest.
+    - RPC_REQUEST_STANDARD_NAME
+    # Allow PaymentResponse instead of the method-based ProcessPaymentResponse.
+    - RPC_RESPONSE_STANDARD_NAME
+
+# Configure compatibility checks run by `buf breaking --against <baseline>`.
+# The baseline can be a previously published module or another schema source.
+breaking:
+  use:
+    # Detect changes that break generated code compatibility at the file level.
+    - FILE
