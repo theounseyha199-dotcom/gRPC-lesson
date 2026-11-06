@@ -5,10 +5,8 @@ version: v2
 modules:
   # Read the existing shared schemas from this directory, relative to this file.
   - path: share-common/common-grpc/src/main/proto
-    # Before publishing, create a repository on buf.build, replace YOUR_OWNER
-    # with your account or organization, and uncomment the following line.
     # This identifies the remote repository used by `buf push`.
-    # name: buf.build/YOUR_OWNER/payment
+    name: buf.build/seyhacg/seyhagrpc
 
 # Check schemas for naming and structure conventions with `buf lint`.
 lint:

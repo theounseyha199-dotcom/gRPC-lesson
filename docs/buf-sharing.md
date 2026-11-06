@@ -5,12 +5,12 @@ The root `buf.yaml` uses the existing schemas in
 
 ## Publish schemas
 
-Create a repository on https://buf.build, choose its visibility, then uncomment
-`modules.name` in `buf.yaml` and replace YOUR_OWNER with your account or organization.
+The module is configured to publish to `buf.build/seyhacg/seyhagrpc`.
+Your account must have write access to that repository.
 From the project root:
 
 ```sh
-buf registry login
+buf registry login buf.build
 buf lint
 buf build
 buf push --label v1.0.0
@@ -19,7 +19,7 @@ buf push --label v1.0.0
 Other developers can download the published schemas:
 
 ```sh
-buf export buf.build/YOUR_OWNER/payment:v1.0.0 --output ./vendor/payment
+buf export buf.build/seyhacg/seyhagrpc:v1.0.0 --output ./vendor/payment
 ```
 
 Private repository consumers must log in with an account that has access.
@@ -59,7 +59,7 @@ Protobuf JSON represents int64 values such as amountCents as strings.
 After publishing, use the registry schema with the same server:
 
 ```sh
-PAYMENT_PROTO_SCHEMA=buf.build/YOUR_OWNER/payment:v1.0.0 \
+PAYMENT_PROTO_SCHEMA=buf.build/seyhacg/seyhagrpc:v1.0.0 \
   bash scripts/request-payment.sh
 ```
 
@@ -70,7 +70,7 @@ you call `POST /api/orders`, as described in the root README.
 ## Check future schema changes
 
 ```sh
-buf breaking --against buf.build/YOUR_OWNER/payment:v1.0.0
+buf breaking --against buf.build/seyhacg/seyhagrpc:v1.0.0
 ```
 
 Keep existing field numbers stable and reserve removed names and numbers.
