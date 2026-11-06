@@ -1,8 +1,8 @@
 package service;
 
-import com.example.common.grpc.payment.PaymentRequest;
-import com.example.common.grpc.payment.PaymentResponse;
-import com.example.common.grpc.payment.PaymentServiceGrpc;
+import build.buf.gen.payment.PaymentRequest;
+import build.buf.gen.payment.PaymentResponse;
+import build.buf.gen.payment.PaymentServiceGrpc;
 import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
@@ -18,7 +18,7 @@ public class PaymentClient {
     }
 
     public PaymentResponse process(String orderId, long amountCents) {
-        // Build the protobuf message defined in common-grpc, using integer cents.
+        // Build the request using the published Buf SDK, with integer cents.
         PaymentRequest request = PaymentRequest.newBuilder()
                 .setOrderId(orderId)
                 .setAmountCents(amountCents)

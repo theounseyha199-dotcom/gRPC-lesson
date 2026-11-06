@@ -1,6 +1,6 @@
 package kh.edu.istad;
 
-import com.example.common.grpc.payment.PaymentServiceGrpc;
+import build.buf.gen.payment.PaymentServiceGrpc;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.grpc.client.GrpcChannelFactory;

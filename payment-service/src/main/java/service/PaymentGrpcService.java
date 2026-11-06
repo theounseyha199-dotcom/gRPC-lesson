@@ -1,8 +1,8 @@
 package service;
 
-import com.example.common.grpc.payment.PaymentRequest;
-import com.example.common.grpc.payment.PaymentResponse;
-import com.example.common.grpc.payment.PaymentServiceGrpc;
+import build.buf.gen.payment.PaymentRequest;
+import build.buf.gen.payment.PaymentResponse;
+import build.buf.gen.payment.PaymentServiceGrpc;
 import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import java.util.UUID;

@@ -3,10 +3,18 @@ plugins {
     id 'io.spring.dependency-management'
 }
 
+// Also apply to the BOM imported automatically by the Spring Boot plugin.
+ext['protobuf-java.version'] = '4.36.2'
+ext['grpc-java.version'] = '1.85.1'
+
 dependencyManagement {
     imports {
         // Supplies compatible dependency versions; align with the Boot plugin in build-logic.
-        mavenBom 'org.springframework.boot:spring-boot-dependencies:4.1.1'
+        mavenBom('org.springframework.boot:spring-boot-dependencies:4.1.1') {
+            // Match the generators used by the published Buf payment SDKs.
+            bomProperty 'protobuf-java.version', '4.36.2'
+            bomProperty 'grpc-java.version', '1.85.1'
+        }
     }
 }
 
