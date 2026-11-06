@@ -2,9 +2,22 @@ plugins {
     id 'spring-boot-common-conventions'
 }
 
+repositories {
+    mavenCentral()
+    maven {
+        name = 'buf'
+        url 'https://buf.build/gen/maven'
+    }
+}
 dependencies {
     // Uses the same generated contract as Order Service, including the server base class.
     implementation project(':share-common:common-grpc')
     // Auto-configures the gRPC server that exposes Spring BindableService beans.
     implementation 'org.springframework.boot:spring-boot-starter-grpc-server'
+
+    implementation('build.buf.gen:seyhacg_seyhagrpc_grpc_java:1.85.1.1.20261106032102.7131864c03ff')
+    implementation('build.buf.gen:seyhacg_seyhagrpc_protocolbuffers_java:36.2.0.1.20261106032102.7131864c03ff')
+
+
+
 }
